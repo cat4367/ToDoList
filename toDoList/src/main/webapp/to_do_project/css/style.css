@@ -5,14 +5,48 @@ body{
 	
 }
 .main-box{
-	width: 50%;
+	width: 60%;
 	padding: 20px;
-	background-color: white;
+	background-image: radial-gradient(#ede8d5, #ebdca2, #edc62f);
 	border-radius: 10px;
 	border: 1px solid #aaa;
 	text-align: center;
+	margin: 0 auto;
 }
 ul { padding-left: 0;}
+
 ul > li{
-	list-style: none;
+	
+	display: flex;
+	align-items: center;
+	padding: 10px;
+	border-bottom: 1px solid #eee;
+}
+.btn_del {
+	margin-left: auto;
+	position: relative;
+	width: 15px;
+	height: 15px;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+}
+
+.btn_del::before,
+.btn_del::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 2px;
+  background-color: #bf1d1d;
+}
+
+.btn_del::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.btn_del::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
