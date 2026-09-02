@@ -1,57 +1,57 @@
 const buttonAdd = document.getElementById('btn_add');
 let total = 0; //현재 myTodoList 등록된 내용 개수
-let myTodoList = []; // 등록된 내용 정보
-
 
 buttonAdd.addEventListener('click',() => {
 	const inputText = document.getElementById('insertList').value;
-	
-	let myTodo = {
-		no : total + 1,
-		content : inputText,
-		finish : 'n'
-	};
-	myTodoList.push(myTodo);
-	
 	total++;
-	document.getElementById('insertList').value = '';
 	
-	// const toDoList = document.createElement('li');
-	// toDoList.textContent = inputText;
-	// const $ul = document.getElementById('myList');
-	// $ul.appendChild(toDoList);
+	let listItem = document.createElement('li');
+	listItem.setAttribute('id','list_'+total);
+	listItem.textContent = inputText;
 	
-	updateMyList();
-})
-
-function updateMyList(){
-	let list = '';
-	for(let item of myTodoList){
-		let listItem ='<li id="list_' + item.no + '">';
-			listItem += '<input type="checkbox"/>';
-			listItem += item.content;
-			listItem += '<button class="btn_del"></button>';
-			listItem += '</li>';
-		list += listItem;
+	let chkBox = document.createElement('input');
+	chkBox.setAttribute('type','checkbox');
+	chkBox.setAttribute('id','chk'+total);
+	listItem.prepend(chkBox);	//li안에서 내용 앞에 chkBox 입력
+	
+	let deleteBtn = document.createElement('button');
+	deleteBtn.setAttribute('class','btn_del');
+	listItem.appendChild(deleteBtn);	//li안에서 내용 뒤에 deleteBtn 입력
+	
+	document.querySelector('#myList').appendChild(listItem);
+	if (document.querySelector('#no_list')){
+		document.querySelector('#no_list').style.display = 'none';
+		
 	}
-		document.getElementById('myList').innerHTML = list;
-}
+	document.querySelector('#insertList').value ='';
+});
 
-const myList = document.getElementById('myList');
 
-// 삭제하는 버튼 만들기 (숨기기 기능추가해야함)
+
+// 버튼에 삭제하는 기능 추가하기 (숨기기 기능추가해야함)
 myList.addEventListener('click', event => {
 
 	const deleteButton = event.target.closest('.btn_del');
 	if (deleteButton) {
-	const targetLi = deleteButton.closest('li');
-	
-	const targetNo = parseInt(targetLi.id.replace('list_', ''));
-	//자동생성된 id의 'list_' 를 지우고 남아있는 숫자(num)를 정수화시킴
-	myTodoList = myTodoList.filter(item => item.no !== targetNo);
-	// myTodoList 배열에서 클릭한 번호(no)와 일치하지 않는 항목들만 남깁니다. (배열에서 삭제)
-	updateMyList();
-	if (myTodoList.length === 0) {
-	      document.getElementById('myList').innerHTML = '<li>아직 할 일이 없습니다.</li>';
-  }
-}});
+		const targetLi = deleteButton.closest('li');
+		targetLi.remove();
+		
+		const reItems = myList.querySelectorAll('li');	//myList에 있는 모든 'li'를 타겟해서 배열?
+		if (reItems.length === 1){											//길이가 '0'이면
+			document.querySelector('#no_list').style.display = '';	//id='no_list'의 hidden을 지운다
+		}
+
+	}
+});
+
+const btnEdit = document.getElementById('btn_edit');
+
+btnEdit.addEventListener('click', () => {
+
+  const delBtns = document.querySelectorAll('.btn_del');
+  
+  // 각 삭제 버튼에 'hide' 클래스를 넣었다 뺐다 합니다.
+  delBtns.forEach(button => {
+    button.classList.toggle('hide');
+  });
+});
