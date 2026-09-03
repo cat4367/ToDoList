@@ -1,26 +1,95 @@
 @charset "UTF-8";
 
-body{
-	background-color: lightblue;
-	
+body {
+  background-image: 
+    url('../images/nukki.png'),
+    url('../images/backspace.jpg');
+
+  background-position: 
+    center center,
+    center center;
+
+  background-repeat: 
+    no-repeat,
+    no-repeat;
+  background-size: 
+    cover,
+    cover;
+
+  margin: 0;
+  min-height: 100vh; 
 }
-.main-box{
+.main-box {
+	position: relative;
+	z-index: 1;
 	width: 60%;
-	padding: 20px;
-	background-image: radial-gradient(#ede8d5, #ebdca2, #edc62f);
-	border-radius: 10px;
-	border: 1px solid #aaa;
+
+	padding: 30px 30px 30px 60px; 
+
+	background: transparent; 
+
+	border-radius: 12px;
 	text-align: center;
-	margin: 0 auto;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+	margin: 30px auto;
+	
+	box-shadow: 
+    8px 12px 20px rgba(0, 0, 0, 0.25),
+    2px 4px 6px rgba(0, 0, 0, 0.12);
+
+	border-right: 1px solid rgba(0, 0, 0, 0.1);
+	border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+  
+	overflow: hidden;
+}
+#h3_style{
+	font-family: "휴먼편지체", Segoe Print, sans-serif;
+}
+
+.main-box::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: -1; 
+
+	background-image: url('../images/liimage.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+
+  -webkit-mask-image: radial-gradient(circle at 25px center, transparent 0px, transparent 8px, black 9px);
+  mask-image: radial-gradient(circle at 25px center, transparent 0px, transparent 8px, black 9px);
+
+
+  -webkit-mask-size: 100% 40px;
+  mask-size: 100% 40px;
+
+  -webkit-mask-repeat: repeat-y;
+  mask-repeat: repeat-y;
 }
 ul { padding-left: 0;}
 
 ul > li{
-	
+	font-family: "휴먼편지체", Segoe Print, sans-serif;
+	font-weight: bold;
+	font-size: 1.2em;
 	display: flex;
 	align-items: center;
 	padding: 10px;
 	border-bottom: 1px solid #eee;
+}
+
+ul > li > span.list_text {
+	flex: 1;
+	text-align: center;
+}
+ul > li > span.list_text.chkCom{
+	text-decoration: line-through;
+	text-decoration-thickness: 2px;
+	color: #a496b3;
 }
 .btn_del {
 	margin-left: auto;
