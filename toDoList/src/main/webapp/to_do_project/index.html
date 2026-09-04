@@ -8,21 +8,37 @@
 </head>
 <body>
 <div class="main-box">
-	<main>To do List</main>
-	<h1>오늘의 할 일</h1>
-	<p>오늘 해야 할 일을 등록해보세요!</p>
-	<input id="insertList" type="text" placeholder="할 일을 입력하세요"/> <button id="btn_add">추가</button>
+	<header class="top_header">
+		<article class="header_left">
+			<label for="cal_date">달력</label><br>
+			<input id="cal_date" type="date" min="2020-01-01" max="2030-12-31">
+		</article>
+		<section class="header_middle">
+			<main>To do List</main>
+			<h1>오늘의 할 일</h1>
+			<p>오늘 해야 할 일을 등록해보세요!</p>
+			<input id="insertList" type="text" placeholder="할 일을 입력하세요"/> <button id="btn_add">추가</button>
+		</section>
+		<article class="header_right">
+			<time class="today_time">현재날짜</time>
+		</article>
+	</header>
 	<hr>
 	<h3 id="h3_style" style="font-size: 1.8em;">CHECK_LIST</h3>
 	<ul id="myList">
 		<li id="no_list">아직 할 일이 없습니다.</li>
 	</ul>
 	<hr>
-	<div class="bottom_btn">
-		<button id="btn_save">저장</button>
-		<button id="btn_edit">수정</button>
-	</div>
-
+	<footer>
+		<article class="bottom_meter">
+			<meter id="todo_meter" min="0" max="1" value="0">목표달성률</meter>
+			<span id="meter_text">0 / 0</span>
+		</article>
+		<article class="bottom_btn">
+			<button id="btn_save">저장</button>
+			<button id="btn_edit">수정</button>
+		</article>
+	</footer>
 </div>
 </body>
 <script src="./js/script.js"/></script>

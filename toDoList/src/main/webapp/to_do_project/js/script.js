@@ -34,13 +34,14 @@ buttonAdd.addEventListener('click',() => {
 		
 	}
 	document.querySelector('#insertList').value ='';
+	updateMeter();
 });
 const inputList = document.getElementById('insertList');
 inputList.addEventListener('keydown', event => {
 	if (event.keyCode === 13){
 		buttonAdd.click();
 	}
-})
+});
 
 myList.addEventListener('change', event => {
 	
@@ -53,6 +54,7 @@ myList.addEventListener('change', event => {
 		}else{
 			textSpan.classList.remove('chkCom');
 		}
+		updateMeter();
 	}
 });
 
@@ -70,6 +72,7 @@ myList.addEventListener('click', event => {
 		if (reItems.length === 1){									//길이가 '1'이면
 			document.querySelector('#no_list').style.display = '';	//id='no_list'의 hidden을 지운다
 		}
+		updateMeter();
 	}
 	
 });
@@ -88,8 +91,33 @@ btnEdit.addEventListener('click', () => {
 
   const delBtns = document.querySelectorAll('.btn_del');
   
-  // 각 삭제 버튼에 'hide' 클래스를 넣었다 뺐다 합니다.
+// 각 삭제 버튼에 'hide' 클래스를 넣었다 뺐다 합니다.
   delBtns.forEach(button => {
     button.classList.toggle('hide');
   });
 });
+
+function updateMeter() {
+	const meter = document.getElementById('todo_meter');
+	const meterText = document.getElementById('meter_text');
+	
+	const allItems = document.querySelectorAll('#myList li:not(#no_list)')
+	const totalCnt = allItems.length;
+	
+	const checkedCnt = document.querySelectorAll('#myList input[type="checkbox"]:checked').length;
+	
+	if (totalCnt === 0) {
+		meter.max = 1;
+		meter.value = 0;
+		meter.optimum = 0;
+		meterText.textContent = '0 / 0';
+	} else {
+		meter.max = totalCnt;
+		meter.low = totalCnt/3;
+		meter.high = (totalCnt/3)*2;
+		meter.value = checkedCnt;
+		meter.optimum = totalCnt;
+		meterText.textContent = `${checkedCnt} / ${totalCnt}`;
+	}
+}
+

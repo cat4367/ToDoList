@@ -7,17 +7,36 @@ body {
 
   background-position: 
     center center,
-    center center;
+    top center;
 
   background-repeat: 
     no-repeat,
     no-repeat;
+    
   background-size: 
     cover,
-    cover;
-
+	cover;
+	
   margin: 0;
   min-height: 100vh; 
+}
+.top_header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 15px;
+}
+.header_left,.header_middle,.header_right {
+	flex: 1;
+}
+.header_left {
+	
+}
+.header_middle {
+	text-align: center;
+}
+.header_right {
+	
 }
 .main-box {
 	position: relative;
@@ -90,6 +109,21 @@ ul > li > span.list_text.chkCom{
 	text-decoration: line-through;
 	text-decoration-thickness: 2px;
 	color: #a496b3;
+}
+footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+#meter_text{
+	margin-left: 8px; 
+	font-weight: bold; 
+	color: #555;
+}
+meter::-webkit-meter-bar {
+  background: #eee;
+  border-radius: 4px;
+  box-shadow: inset 0 2px 3px rgba(0,0,0,0.1);
 }
 .btn_del {
 	margin-left: auto;
