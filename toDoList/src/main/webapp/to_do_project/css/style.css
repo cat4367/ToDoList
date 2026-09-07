@@ -64,7 +64,38 @@ body {
 #h3_style{
 	font-family: "휴먼편지체", Segoe Print, sans-serif;
 }
-
+#insertList{
+	height: 15px;
+	border-radius: 15px;
+	outline: none;
+	padding-left: 10px;
+	background-color: rgba(245, 221, 125, 0.5);
+}
+.header_right{
+	width: 280px;
+	height: 180px;
+	border-radius: 15px;
+	background-image: url('../images/usagi3.jpg');
+	background-size: cover;
+	background-position: center;
+	position: relative;
+}
+#today_date{
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	display: inline-block;
+	height: 27px;
+	padding: 0 5px;
+	font-weight: bold;
+	border-radius: 5px;
+	background-color: rgba(245, 221, 125, 0.7);
+}
+#btn_change{
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
 .main-box::before {
 	content: '';
 	position: absolute;
@@ -134,7 +165,7 @@ meter::-webkit-meter-bar {
 	border: none;
 	cursor: pointer;
 }
-.btn_del.hide {
+.hide {
   display: none;
 }
 
@@ -161,7 +192,7 @@ meter::-webkit-meter-bar {
 	justify-content: flex-end;
 	gap : 10px;
 }
-#btn_save, #btn_edit, #btn_add {
+#btn_save, #btn_edit, #btn_add, #btn_alldel {
 	border-radius: 6px;
 	cursor: pointer;
 	box-shadow: 0 2px 5px rgba(0,0,0,0.2);

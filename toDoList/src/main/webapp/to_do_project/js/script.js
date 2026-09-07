@@ -20,7 +20,7 @@ buttonAdd.addEventListener('click',() => {
 	
 	let deleteBtn = document.createElement('button');
 	deleteBtn.setAttribute('class','btn_del');
-	deleteBtn.classList.add('hide');
+	deleteBtn.classList.add('hide');		// class에 hide 추가하기 (class="btn_del hide")
 	
 	// (체크박스 > 텍스트 span > 삭제 버튼 순서대로 입력)
 	// <li~><input~><span~></span><button~></button></li> 이런 형태
@@ -62,7 +62,7 @@ myList.addEventListener('change', event => {
 myList.addEventListener('click', event => {
 	const deleteButton = event.target.closest('.btn_del');
 	if (!deleteButton) return;
-	const deleteConfirm = confirm("정말 삭제하시겠습니까?")
+	const deleteConfirm = confirm("정말 삭제하시겠습니까?");
 	if (deleteConfirm){
 
 		const targetLi = deleteButton.closest('li');
@@ -74,15 +74,39 @@ myList.addEventListener('click', event => {
 		}
 		updateMeter();
 	}
+});
+// 전체 삭제하는 버튼 추가하기
+const buttonAlldel = document.getElementById('btn_alldel')
+buttonAlldel.addEventListener('click', () => {
+
+	const allItems = document.querySelectorAll('#myList li:not(#no_list)')	// id 'myList'의 자식 li중에서 'no_list'를 제외한 모든것
 	
+	if (allItems.length === 0){												// list가 no_list 1개뿐이라면 에러 알람뜨게하기
+		alert("삭제할 리스트가 없습니다.");
+		return;
+	}
+	
+	const deleteConfirm = confirm("정말로 ❗전부❗ 삭제하시겠습니까?");
+	
+	if (deleteConfirm){
+		for (let i = 0; i < allItems.length; i++){
+			let item = allItems[i];
+			item.remove();
+		}
+		document.querySelector('#no_list').style.display = '';
+		updateMeter();
+	}
 });
 
 // 저장 버튼 기능 추가하기
 const btnSave = document.getElementById('btn_save');
 btnSave.addEventListener('click', () => {
 	const saveConfirm = confirm("저장 하시겠습니까?");
-	console.log(saveConfirm);
 	
+	if(saveConfirm){
+		alert("저장이 완료되었습니다.")
+		return;
+	}
 });
 
 // 수정 버튼을 이용해서 삭제 버튼 생산했다 지우기
@@ -90,11 +114,14 @@ const btnEdit = document.getElementById('btn_edit');
 btnEdit.addEventListener('click', () => {
 
   const delBtns = document.querySelectorAll('.btn_del');
+  const allDelBtn = document.getElementById('btn_alldel');
   
-// 각 삭제 버튼에 'hide' 클래스를 넣었다 뺐다 합니다.
-  delBtns.forEach(button => {
+  delBtns.forEach(button => {							// 각 삭제 버튼에 'hide' 클래스를 넣었다 뺐다 합니다.
     button.classList.toggle('hide');
   });
+  if(allDelBtn) {
+	allDelBtn.classList.toggle('hide');
+  }
 });
 
 function updateMeter() {
@@ -120,4 +147,25 @@ function updateMeter() {
 		meterText.textContent = `${checkedCnt} / ${totalCnt}`;
 	}
 }
+// 현재날짜 만들기
+const today = new Date();
+
+const year = today.getFullYear();
+const month = today.getMonth() + 1;
+const date = today.getDate();
+
+const formmatDate = `📆 ${year}년 ${month}월 ${date}일`;
+
+document.getElementById('today_date').innerText = formmatDate;
+
+//배경 변경하는 버튼
+const bgList = ['../images/usagi3.jpg','../images/usagi1.jpg','../images/usagi2.jpg']
+let bgNum = 0;
+
+document.getElementById('btn_change').addEventListener('click',() => {
+	bgNum = (bgNum + 1) %bgList.length;
+	
+	const hederRight = document.querySelector('.header_right');
+	hederRight.style.backgroundImage = `url('${bgList[bgNum]}')`;
+})
 
