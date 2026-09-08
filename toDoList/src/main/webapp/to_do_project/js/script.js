@@ -43,6 +43,7 @@ inputList.addEventListener('keydown', event => {
 	}
 });
 
+//체크 박스 체크유무에 따른 변화
 myList.addEventListener('change', event => {
 	
 	if(event.target.type === 'checkbox'){
@@ -51,6 +52,7 @@ myList.addEventListener('change', event => {
 		
 		if (aaa.checked){
 			textSpan.classList.add('chkCom');		// <span class="list_text chkCom"> class에 문구 추가
+			
 		}else{
 			textSpan.classList.remove('chkCom');
 		}
@@ -159,7 +161,7 @@ const formmatDate = `📆 ${year}년 ${month}월 ${date}일`;
 document.getElementById('today_date').innerText = formmatDate;
 
 //배경 변경하는 버튼
-const bgList = ['../images/usagi3.jpg','../images/usagi1.jpg','../images/usagi2.jpg']
+const bgList = ['./images/usagi3.jpg','./images/usagi1.jpg','./images/usagi2.jpg']
 let bgNum = 0;
 
 document.getElementById('btn_change').addEventListener('click',() => {
