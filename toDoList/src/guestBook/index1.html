@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="./bookStyle.css">
+<title>방명록 남기는 사이트</title>
+</head>
+<body>
+<div class="main_text">
+	<h1>방명록을 작성해주세요~</h1>
+	<form class="write_text">
+		<div class="input_group">
+			<label for="guestName">방문자 이름</label>
+			<input id="guestName" type="text" placeholder="ex)○○○" name="writer">
+			<label for="guestContent">방명록 내용</label>
+			<textarea id="guestContent" rows="6" placeholder="내용을 입력하세요"  name="content"></textarea>
+		</div>
+		<div class="btn_group">
+			<button type="submit" class="btn_submit">작성완료</button>
+			<button type="reset" class="btn_reset">초기화</button>
+		</div>
+	</form>
+<h2>방명록 목록</h2>
+	<table class="guestbook_table">
+		<thead>
+			<tr>
+				<th>번호</th>
+				<th>작성자</th>
+				<th>내용</th>
+				<th>작성일자</th>
+			</tr>
+		</thead>
+		<tbody class="guestbook_tbody">
+			<tr>
+				<td>3</td>
+				<td>정형민</td>
+				<td>집에 일찍가면 행복할거야</td>
+				<td>2026-09-10 11:31</td>
+     	   </tr>
+			<tr>
+				<td>2</td>
+				<td>김영희</td>
+				<td>데이터 베이스 연습하는날</td>
+				<td>2026-09-09 14:20</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>홍길동</td>
+				<td>오늘은 아무 일도 없었다.</td>
+				<td>2026-09-08 09:15</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</body>
+<script src="./write.js"></script>
+</html>

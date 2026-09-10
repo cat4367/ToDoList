@@ -1,0 +1,100 @@
+@charset "UTF-8";
+body{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+}
+.main_text{
+	background-color: #96B9FFFF;
+	border: solid 1px black;
+	border-radius: 15px;
+	box-shadow: 0 4px 1px rgba(0,0,0,0.2);
+	padding: 20px;
+	width: 60%;
+}
+h1{
+	text-align: center;
+}
+h2{
+	text-align: center;
+}
+.input_group{
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+}
+label{
+	font-weight: bold;
+	font-size: 15px;
+	color: #555;
+}
+#guestName{
+	margin: 0 auto;
+	width: 20%;
+}
+#guestName, #guestContent{
+	padding: 5px;
+	font-size: 15px;
+	resize: none;
+}
+#guestName:focus, #guestContent:focus{
+	outline: none;
+	border: solid 2px #420582FF;
+}
+.btn_group{
+	display: flex;
+	gap: 10px;
+	margin-top: 20px;
+	justify-content: center;
+}
+.write_text{
+	box-sizing: 10px 90%;
+}
+
+button{
+	height: 25px;
+	width: 100px;
+	margin: 0 10px;
+	cursor: pointer;
+	border: none;
+	border-radius: 6px;
+	font-weight: bold;
+	background-color: #FFBABAFF;
+	transition: background-color 0.8s;
+}
+button:hover{
+	background-color: #FA5252FF
+}
+.guestbook_table{
+	width: 100%;
+	font-size: 18px;
+	table-layout: fixed;
+}
+.guestbook_table th,.guestbook_table td{
+	padding: 5px;
+	text-align: center;
+	border: 1px solid #ffffff;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.guestbook_table th{
+	background-color: #1E5BD6FF;
+	border: 2px solid #4A90E2;
+	font-weight: bold;
+}
+.guestbook_table th:nth-child(1), .guestbook_table td:nth-child(1) { width: 8%;}
+.guestbook_table th:nth-child(2), .guestbook_table td:nth-child(2) { width: 12%; font-weight: bold;}
+.guestbook_table th:nth-child(3), .guestbook_table td:nth-child(3) { width: 60%; text-align: left;}
+.guestbook_table th:nth-child(4), .guestbook_table td:nth-child(4) { width: 20%; font-size: 15px;}
+
+.guestbook_table tbody tr:hover{
+	font-size: 1.1em;
+	font-weight: bold;
+}
+.guestbook_table tbody tr:hover td:nth-child(3){
+	white-space: normal;
+	overflow: visible;
+	text-overflow: clip;
+}
