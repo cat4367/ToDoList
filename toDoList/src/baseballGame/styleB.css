@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+body{
+	text-align: center;
+	min-height: 100vh;
+	border: solid 1px black;
+}
+h1{
+	color: blue;
+}
